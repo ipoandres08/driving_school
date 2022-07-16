@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { AddCustumer } from './components/AddCustumer';
+import { Navbar } from './components/Navbar';
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { CustumerList } from './components/CustumerList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route index element={<CustumerList />}></Route>
+          <Route path='/' element={<CustumerList />}></Route>
+          <Route path='/addCustumer' element={<AddCustumer />}></Route>
+          <Route path='/edit-custumer/:id' element={<AddCustumer />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
